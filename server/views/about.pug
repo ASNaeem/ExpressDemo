@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 html(lang="en")
     head
         meta(charset="UTF-8")
@@ -5,5 +6,6 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Document
     body
-        .cd
-            p Naeem Bhai
+        form(action="/", method="post")
+            input(type="text", name="username")
+            input(type="submit", value="Submit")
