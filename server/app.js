@@ -1,12 +1,13 @@
 const express = require('express'),
 app = express(),
-bodyParser = require('body-parser');
+bodyParser = require('body-parser'),
+cors = require('cors');
 app.use(bodyParser.urlencoded({extended: true}))
-
+app.use(cors())
 app.set("view engine","pug");
 
 app.get('/', (req, res) => {
-    res.render('index', {pretty: true});
+    res.json({Name: 'Naeem', Id: 34, Dept: 'CSE'})
 })
 
 app.post('/', (req, res) => {
@@ -23,4 +24,4 @@ app.get('/about',(req, res) => {
 app.get('/*', (req, res)=>{
     res.send("request not found: 404")
 })
-app.listen(3000, 'localhost', () => console.log('Server started'))
+app.listen(3001, 'localhost', () => console.log('Server started'))

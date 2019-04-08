@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    data: {},
+  }
+  getData = async () =>{
+    let response = await fetch('http://localhost:3001')
+    let data = await response.json()
+    await this.setState({data})
+  }
+  async componentDidMount() {
+    await this.getData()
+    await console.log(this.state.data)
+  }
   render() {
+    let data = this.state.data
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <ul>
+          <li>{data.Name }</li>
+          <li>{data.Id}</li>
+          <li>{data.Dept}</li>
+        </ul>
       </div>
     );
   }
 }
-
+const Li  = props = {
+  
+}
 export default App;
